@@ -1,5 +1,12 @@
 {% extends "base.jinja" %} {% block content %}
 
-   <h2> {{ isbn }} </h2>
-
+{% if book.isbn == isbn %}
+    <ul>
+        <li>Title: {{book.title}}</li>
+        <li>Author: {{book.author}}</li>
+        <li>Genre: {{book.genre}}</li>
+    </ul>
+{% else %}
+    <p>Maybe you can find something else you'd be interested in <a href="/library">here</a></p>
+{% endif %}
 {% endblock %}
