@@ -1,5 +1,5 @@
-from flask import render_template, Blueprint
-from models.library import books
+from flask import render_template, Blueprint, request, redirect
+from models.library import books, add_new_book
 # from models.book import Book
 
 library_blueprint = Blueprint("library", __name__)
@@ -7,6 +7,12 @@ library_blueprint = Blueprint("library", __name__)
 @library_blueprint.route("/library")
 def index():
     return render_template("index.jinja", title="Lydia's Library", books=books)
+
+@library_blueprint.route("/library", methods=["POST"])
+def add_book():
+    new_book = (request.form["title"], request.form["author"], request.form["genre"], request.form["isbn"])
+    add_new_book(new_book)
+    return redirect("/library")
 
 @library_blueprint.route("/library/<isbn>")
 def show_isbn(isbn):

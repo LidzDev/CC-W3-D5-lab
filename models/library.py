@@ -9,7 +9,7 @@ books = (book1, book2, book3)
 def list_all_books(books):
     pass
 
-def add_book(book):
+def add_new_book(book):
     books.append(book)
 
 def delete_book():
