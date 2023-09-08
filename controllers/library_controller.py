@@ -1,6 +1,6 @@
 from flask import render_template, Blueprint, request, redirect
 from models.library import books, add_new_book
-# from models.book import Book
+from models.book import Book
 
 library_blueprint = Blueprint("library", __name__)
 
@@ -10,7 +10,13 @@ def index():
 
 @library_blueprint.route("/library", methods=["POST"])
 def add_book():
-    new_book = (request.form["title"], request.form["author"], request.form["genre"], request.form["isbn"])
+    print(request.form)
+    title = request.form["title"]
+    print(title)
+    author = request.form["author"]
+    genre = request.form["genre"]
+    isbn = request.form["isbn"]
+    new_book = Book(title, author, genre, isbn)
     add_new_book(new_book)
     return redirect("/library")
 
