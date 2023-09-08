@@ -1,5 +1,5 @@
 from flask import render_template, Blueprint, request, redirect
-from models.library import books, add_new_book
+from models.library import books, add_new_book, delete_book
 from models.book import Book
 
 library_blueprint = Blueprint("library", __name__)
@@ -30,3 +30,8 @@ def show_isbn(isbn):
     return render_template("isbn.jinja", title =title, isbn = isbn, book=book)
 
 #  sending in the last book in the for loop, we are not going to use it but jinja is not happy without
+
+@library_blueprint.route("/library/delete/<isbn>", methods=["POST"])
+def delete(isbn):
+    delete_book(isbn)
+    return redirect("/library")                         

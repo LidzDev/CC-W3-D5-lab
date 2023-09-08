@@ -1,7 +1,7 @@
 {% extends "base.jinja" %} {% block content %}
 {% for book in books %}
     <ul>
-        <li>{{book.title}} by {{book.author}}, genre: {{book.genre}}</li>
+        <li><a href="/library/{{book.isbn}}">{{book.title}}</a> by {{book.author}}, genre: {{book.genre}}</li>
     </ul>
 {% endfor %} 
 
