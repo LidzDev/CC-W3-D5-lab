@@ -5,3 +5,4 @@ class Book:
         self.author = author
         self.genre = genre
         self.isbn = isbn
+        self.checked_out = False

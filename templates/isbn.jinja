@@ -1,14 +1,27 @@
 {% extends "base.jinja" %} {% block content %}
-<hr>
 {% if book.isbn == isbn %}
-    <ul>
-        <li>Title: {{book.title}}</li>
-        <li>Author: {{book.author}}</li>
-        <li>Genre: {{book.genre}}</li>
-        <li>ISBN: {{book.isbn}}</li>
-    </ul>
+    <div id="grid-container">
+        <hr id="top">
+        <div id="info">
+            <ul>
+                <li>Title: {{book.title}}</li>
+                <li>Author: {{book.author}}</li>
+                <li>Genre: {{book.genre}}</li>
+                <li>ISBN: {{book.isbn}}</li>
+                {% if book.checked_out %} <li>This book is checked out. Chat with the librarian to reserve it</li>
+                {% else %} <li>This book is available to check out</li>
+                {% endif %}
+            </ul>
+        </div>
+        <div id="actions">
+            <form name="delete_book" action="/library/delete/{{book.isbn}}" method="post">
+                 <input type="submit" value="Check Out Book"></form> | <input type="submit" name="delete_book" value="Delete Book"/>
+            </form>
+        </div>
+        <hr id="bottom">
+    </div>
 {% else %}
     <p>Maybe you can find something else you'd be interested in <a href="/library">here</a></p>
 {% endif %}
-<hr>
+
 {% endblock %}

@@ -7,7 +7,8 @@ body {
     background-color: #92BCEA;
     margin-left: 3rem;
   }
-h1 {
+
+  h1 {
     font-weight: lighter;
 }
 ul {
@@ -19,6 +20,32 @@ hr {
     margin-inline: 0;
     border: 1px solid black;
 }
+
+#info {
+    grid-area: left;
+}
+
+#actions {
+    grid-area: right;
+    padding-top: 2rem;
+}
+#top {
+    grid-area: top;
+}
+#bottom {
+    grid-area: bottom;
+}
+
+#grid-container {
+    display: grid;
+    grid-template-areas:
+        'top top'
+        'left right'
+        'bottom bottom';
+    grid-template-columns: 3f3 7r;
+}
+
+
 
 /* body>header {
     padding: 1rem;

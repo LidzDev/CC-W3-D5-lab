@@ -4,7 +4,7 @@
 {% for book in books %}
     <ul>
         <li> <form name="delete_book" action="/library/delete/{{book.isbn}}" method="post"><a href="/library/{{book.isbn}}">{{book.title}}</a> by {{book.author}}, genre: {{book.genre}}
-       <input type="submit" value="Delete Book"/></form> </li>
+        | <input type="submit" name="delete_book" value="Delete Book"/> | <input type="submit" value="Check Out Book"></form> </li>
     </ul>
 {% endfor %} 
 

@@ -15,19 +15,16 @@ Provide the following functionality:
 V * List all Books
 V * Show an individual Book
 V * Add a new Book to the Library.
-* Remove a Book from the Library 
-methods are there but needs to be added to the jinja via a form
-then I desperately need to do some styling with css
-
+V * Remove a Book from the Library 
  
- Draw a diagram showing what happens when a user sends a GET request to `/books`. Where does the request go and how does the server process the request? What files are doing what?
+V  Draw a diagram showing what happens when a user sends a GET request to `/books`. Where does the request go and how does the server process the request? What files are doing what?
  
 ## Extensions
 
-* Add a `checked_out` boolean property to the `Book` class.
-* When displaying a book, display whether it is checked in or checked out.
-* Add some styling using CSS.
-* Add a navigation bar that is shared between all templates
+V * Add a `checked_out` boolean property to the `Book` class.
+V * When displaying a book, display whether it is checked in or checked out.
+V * Add some styling using CSS.
+V * Add a navigation bar that is shared between all templates
 
 ## Advanced Extensions
 
