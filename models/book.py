@@ -6,3 +6,7 @@ class Book:
         self.genre = genre
         self.isbn = isbn
         self.checked_out = False
+
+    def checking_out(self):
+        self.checked_out = True
+        return self

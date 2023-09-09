@@ -25,6 +25,6 @@ def find_book(isbn):
 
 def checkout_book(isbn):
     book_to_checkout = find_book(isbn)
-    book_index = index(books[book_to_checkout])
-    books[book_index][4]= True
-   
+    book_index = books.index(book_to_checkout)
+    book_to_checkout.checking_out()
+    books[book_index] = book_to_checkout

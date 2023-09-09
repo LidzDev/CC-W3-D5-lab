@@ -1,5 +1,5 @@
 from flask import render_template, Blueprint, request, redirect
-from models.library import books, add_new_book, delete_book
+from models.library import books, add_new_book, delete_book, find_book, checkout_book
 from models.book import Book
 
 library_blueprint = Blueprint("library", __name__)
@@ -10,9 +10,7 @@ def index():
 
 @library_blueprint.route("/library", methods=["POST"])
 def add_book():
-    print(request.form)
     title = request.form["title"]
-    print(title)
     author = request.form["author"]
     genre = request.form["genre"]
     isbn = request.form["isbn"]
@@ -22,14 +20,17 @@ def add_book():
 
 @library_blueprint.route("/library/<isbn>")
 def show_isbn(isbn):
-    for book in books:
-        if book.isbn == isbn:
-            title = "Details for " + book.title
-            return render_template("isbn.jinja", title = title, isbn = isbn, book = book)
+    specific_book = None
+    specific_book = find_book(isbn)
     title = "Unfortunately isbn " + isbn + " is unavailable."
-    return render_template("isbn.jinja", title =title, isbn = isbn, book=book)
+    if specific_book: 
+        title = "Details for " + specific_book.title
+    return render_template("isbn.jinja", title = title, isbn = isbn, book = specific_book)
 
-#  sending in the last book in the for loop, we are not going to use it but jinja is not happy without
+@library_blueprint.route("/library/<isbn>", methods=["POST"])
+def check_out_isbn(isbn):
+    checkout_book(isbn)
+    return redirect("/library") 
 
 @library_blueprint.route("/library/delete/<isbn>", methods=["POST"])
 def delete(isbn):

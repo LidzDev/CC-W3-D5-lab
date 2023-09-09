@@ -21,6 +21,10 @@ hr {
     border: 1px solid black;
 }
 
+footer {
+    padding-top: 3rem;
+}
+
 #info {
     grid-area: left;
 }
@@ -28,6 +32,7 @@ hr {
 #actions {
     grid-area: right;
     padding-top: 2rem;
+    text-align: right;
 }
 #top {
     grid-area: top;
@@ -39,10 +44,10 @@ hr {
 #grid-container {
     display: grid;
     grid-template-areas:
-        'top top'
-        'left right'
-        'bottom bottom';
-    grid-template-columns: 3f3 7r;
+        'top top top'
+        'left right blank'
+        'bottom bottom bottom';
+    grid-template-columns: 30% 30% 40%;
 }
 
 
