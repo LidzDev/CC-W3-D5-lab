@@ -1,10 +1,14 @@
 {% extends "base.jinja" %} {% block content %}
+
+<hr>
 {% for book in books %}
     <ul>
-        <li><a href="/library/{{book.isbn}}">{{book.title}}</a> by {{book.author}}, genre: {{book.genre}}
-        <form name="delete_book" action="/library/delete/{{book.isbn}}" method="post"><input type="submit" value="Delete Book"/></form> </li>
+        <li> <form name="delete_book" action="/library/delete/{{book.isbn}}" method="post"><a href="/library/{{book.isbn}}">{{book.title}}</a> by {{book.author}}, genre: {{book.genre}}
+       <input type="submit" value="Delete Book"/></form> </li>
     </ul>
 {% endfor %} 
+
+<hr style="border: 1px solid black;">
 
 <form name="add_book" action="/library" method="post">
     <label for="title">Title</label>
